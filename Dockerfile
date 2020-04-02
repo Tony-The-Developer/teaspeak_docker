@@ -1,12 +1,12 @@
 FROM debian:10-slim
+ARG VERSION=1.4.10
 RUN mkdir -p /opt/teaspeak
 WORKDIR /opt/teaspeak
 RUN apt-get update -y &&\
         apt-get --no-install-recommends install -y wget curl ca-certificates &&\
-        wget https://repo.teaspeak.de/server/linux/amd64_stable/TeaSpeak-1.3.25-2.tar.gz&&\
-        tar -xzf TeaSpeak-1.3.25-2.tar.gz &&\
-        rm TeaSpeak-1.3.25-2.tar.gz &&\
-        ./install_libnice.sh &&\
+        wget https://repo.teaspeak.de/server/linux/amd64_stable/TeaSpeak-$VERSION.tar.gz &&\
+        tar -xzf TeaSpeak-$VERSION.tar.gz &&\
+        rm TeaSpeak-$VERSION.tar.gz &&\
         apt-get purge -y wget curl ca-certificates &&\
         rm -rf /var/lib/apt/lists/*
 COPY config.yml /opt/teaspeak/
