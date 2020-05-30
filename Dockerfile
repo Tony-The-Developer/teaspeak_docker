@@ -13,9 +13,9 @@ RUN apt-get update -y &&\
         apt-get purge -y wget curl unzip &&\
         rm -r tmp_files &&\
         rm -rf /var/lib/apt/lists/*
-COPY config.yml /opt/teaspeak/
+RUN useradd -M teaspeak
 COPY protocol_key.txt /opt/teaspeak/
+COPY docker-entrypoint /usr/local/bin/
 EXPOSE 10011/tcp 30033/tcp 9987/udp 9987/tcp
 VOLUME /opt/teaspeak/files /opt/teaspeak/database /opt/teaspeak/certs /opt/teaspeak/logs
-SHELL ["/bin/bash", "-c"]
-CMD ./teastart_minimal.sh
+ENTRYPOINT ["docker-entrypoint"]
