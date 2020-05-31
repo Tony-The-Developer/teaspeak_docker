@@ -3,7 +3,7 @@ set -e
 if [ ! -f /opt/teaspeak/config.yml ]; then
     echo "version: 15" >> /opt/teaspeak/config.yml
     echo "log": >> /opt/teaspeak/config.yml
-    echo "  level: 3" >> /opt/teaspeak/config.yml
+    echo "  level: $LOG_LEVEL" >> /opt/teaspeak/config.yml
     echo "  colored: 0" >> /opt/teaspeak/config.yml
     echo "  vs_size: 0" >> /opt/teaspeak/config.yml
     echo "  "path: 'logs/log_${time}(%Y-%m-%d_%H:%M:%S)_${group}.log' >> /opt/teaspeak/config.yml
@@ -57,10 +57,10 @@ if [ ! -f /opt/teaspeak/config.yml ]; then
     echo "binding:">> /opt/teaspeak/config.yml
     echo "  file:" >> /opt/teaspeak/config.yml
     echo "    "host: '"0.0.0.0,[::]"' >> /opt/teaspeak/config.yml
-    echo "    port: 30033" >> /opt/teaspeak/config.yml
+    echo "    port: $FILE_PORT" >> /opt/teaspeak/config.yml
     echo "  query:" >> /opt/teaspeak/config.yml
     echo "    "host: '"0.0.0.0,[::]"' >> /opt/teaspeak/config.yml
-    echo "    port: 10011" >> /opt/teaspeak/config.yml
+    echo "    port: $QUERY_PORT" >> /opt/teaspeak/config.yml
     echo "  voice:" >> /opt/teaspeak/config.yml
     echo "    "default_host: '"0.0.0.0,::"' >> /opt/teaspeak/config.yml
     echo "    enforce: 0" >> /opt/teaspeak/config.yml
@@ -72,7 +72,7 @@ if [ ! -f /opt/teaspeak/config.yml ]; then
     echo "  licence: 7" >> /opt/teaspeak/config.yml
     echo "  delete_old_bans: 1" >> /opt/teaspeak/config.yml
     echo "  delete_missing_icon_permissions: 0" >> /opt/teaspeak/config.yml
-    echo "  allow_weblist: 0" >> /opt/teaspeak/config.yml
+    echo "  allow_weblist: $ALLOW_WEBLIST" >> /opt/teaspeak/config.yml
     echo "  show_invisible_clients: 1" >> /opt/teaspeak/config.yml
     echo "  disable_ip_saving: 0" >> /opt/teaspeak/config.yml
     echo "  strict_ut8_mode: 0" >> /opt/teaspeak/config.yml
@@ -109,11 +109,11 @@ if [ ! -f /opt/teaspeak/config.yml ]; then
     echo "  connect_limit: 10" >> /opt/teaspeak/config.yml
     echo "  client_connect_limit: 3" >> /opt/teaspeak/config.yml
     echo "  protocol:" >> /opt/teaspeak/config.yml
-    echo "    experimental_31: 1" >> /opt/teaspeak/config.yml
-    echo "  default_port: 9987" >> /opt/teaspeak/config.yml
+    echo "    experimental_31: $EXPERIMENTAL_31" >> /opt/teaspeak/config.yml
+    echo "  default_port: $DEFAULT_PORT" >> /opt/teaspeak/config.yml
     echo "  allow_session_reinitialize: 1" >> /opt/teaspeak/config.yml
     echo "web:" >> /opt/teaspeak/config.yml
-    echo "  enabled: 1" >> /opt/teaspeak/config.yml
+    echo "  enabled: $WEB_ENABLED" >> /opt/teaspeak/config.yml
     echo "  ssl:" >> /opt/teaspeak/config.yml
     echo "    certificate:" >> /opt/teaspeak/config.yml
     echo "      default:" >> /opt/teaspeak/config.yml
@@ -156,7 +156,7 @@ if [ ! -f /opt/teaspeak/config.yml ]; then
     echo "    file: geoloc/ipcat.csv" >> /opt/teaspeak/config.yml
     echo "    enabled: 0" >> /opt/teaspeak/config.yml
     echo "music:" >> /opt/teaspeak/config.yml
-    echo "  enabled: 1" >> /opt/teaspeak/config.yml
+    echo "  enabled: $MUSIC_ENABLED" >> /opt/teaspeak/config.yml
 fi
 if ls -l /opt/teaspeak/teastart_minimal.sh | awk '{print $3}' | grep -Fxq 'root'; then
     chown -R teaspeak /opt/teaspeak
