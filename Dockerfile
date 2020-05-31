@@ -10,6 +10,7 @@ ENV ALLOW_WEBLIST 0
 ENV EXPERIMENTAL_31 1
 RUN mkdir -p /opt/teaspeak
 WORKDIR /opt/teaspeak
+RUN useradd -M teaspeak
 RUN apt-get update -y &&\
         apt-get --no-install-recommends install -y wget curl unzip ca-certificates python &&\
         wget --no-check-certificate https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl &&\
@@ -18,10 +19,10 @@ RUN apt-get update -y &&\
         tar -xzf TeaSpeak-$VERSION.tar.gz &&\
         rm TeaSpeak-$VERSION.tar.gz &&\
         ./install_music.sh install &&\
+        chown -R teaspeak:teaspeak /opt/teaspeak &&\
         apt-get purge -y wget curl unzip &&\
         rm -r tmp_files &&\
         rm -rf /var/lib/apt/lists/*
-RUN useradd -M teaspeak
 COPY protocol_key.txt /opt/teaspeak/
 COPY docker-entrypoint /usr/local/bin/
 EXPOSE 10011/tcp 30033/tcp 9987/udp 9987/tcp
