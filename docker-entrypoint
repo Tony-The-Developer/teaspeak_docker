@@ -158,7 +158,7 @@ if [ ! -f /opt/teaspeak/config.yml ]; then
     echo "music:" >> /opt/teaspeak/config.yml
     echo "  enabled: $MUSIC_ENABLED" >> /opt/teaspeak/config.yml
 fi
-if ls -l /opt/teaspeak/TeaData.sqlite | awk '{print $3}' | grep -Fxq 'root'; then
+if stat -c "%U %G" /opt/teaspeak/database | awk '{print $1}' | grep -Fxq 'root'; then
     chown -R teaspeak /opt/teaspeak
 fi
 su -c "./teastart_minimal.sh" teaspeak
