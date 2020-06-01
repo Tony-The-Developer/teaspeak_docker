@@ -4,161 +4,22 @@ if [ ! -f /opt/teaspeak/config.yml ]; then
     echo "version: 15" >> /opt/teaspeak/config.yml
     echo "log": >> /opt/teaspeak/config.yml
     echo "  level: $LOG_LEVEL" >> /opt/teaspeak/config.yml
-    echo "  colored: 0" >> /opt/teaspeak/config.yml
-    echo "  vs_size: 0" >> /opt/teaspeak/config.yml
-    echo "  "path: 'logs/log_${time}(%Y-%m-%d_%H:%M:%S)_${group}.log' >> /opt/teaspeak/config.yml
-    echo "  terminal_level: 2" >> /opt/teaspeak/config.yml
-    echo "messages:" >> /opt/teaspeak/config.yml
-    echo "  level: ~" >> /opt/teaspeak/config.yml
-    echo "  voice:" >> /opt/teaspeak/config.yml
-    echo "    server_stop: Server stopped" >> /opt/teaspeak/config.yml
-    echo "  application:" >> /opt/teaspeak/config.yml
-    echo "    stop: Application stopped" >> /opt/teaspeak/config.yml
-    echo "    crash: Application crashed" >> /opt/teaspeak/config.yml
-    echo "  idle_time: Idle time exceeded" >> /opt/teaspeak/config.yml
-    echo "  mute:" >> /opt/teaspeak/config.yml
-    echo "    "mute_message: '"Hey!\nI muted you!"' >> /opt/teaspeak/config.yml
-    echo "    "unmute_message: '"Hey!\nI unmuted you!"' >> /opt/teaspeak/config.yml
-    echo "    kick_invalid:" >> /opt/teaspeak/config.yml
-    echo "      hardware_id: ~" >> /opt/teaspeak/config.yml
-    echo "      command: ~" >> /opt/teaspeak/config.yml
-    echo "      badges: ~" >> /opt/teaspeak/config.yml
-    echo "  vpn:" >> /opt/teaspeak/config.yml
-    echo "    "kick: '"Please disable your VPN! (Provider: ${provider.name})"' >> /opt/teaspeak/config.yml
-    echo "  kick_invalid:" >> /opt/teaspeak/config.yml
-    echo "    hardware_id: Invalid hardware id. Protocol hacked?" >> /opt/teaspeak/config.yml
-    echo "    command: Invalid command. Protocol hacked?" >> /opt/teaspeak/config.yml
-    echo "    badges: Invalid badges. Protocol hacked?" >> /opt/teaspeak/config.yml
-    echo "  teamspeak_permission_editor: "'"\n[b][COLOR=#aa0000]ATTENTION[/COLOR][/b]:\nIt seems like you're trying to edit the TeaSpeak permissions with the TeamSpeak 3 client\nThis is [b]really[/b] buggy due a bug within the client you're using.\n\nWe recommand to [b]use the [url=https://web.teaspeak.de/]TeaSpeak-Web[/url][/b] client or the [b][url=https://teaspeak.de/]TeaSpeak client[/url][/b].\nYatQA is a good option as well.\n\nTo disable/edit this message please edit the config.yml\nPlease note: Permission bugs, which will be reported wound be accepted."' >> /opt/teaspeak/config.yml
-    echo "  shutdown:" >> /opt/teaspeak/config.yml
-    echo "    "scheduled: '"[b][color=#DA9100]Scheduled shutdown at ${time}(%Y-%m-%d %H:%M:%S)[/color][/b]"' >> /opt/teaspeak/config.yml
-    echo "    "interval: '"[b][color=red]Server instance shutting down in ${interval}[/color][/b]"' >> /opt/teaspeak/config.yml
-    echo "    intervals:" >> /opt/teaspeak/config.yml
-    printf "      1: 1 second\n      2: 2 seconds\n      3: 3 seconds\n      4: 4 seconds\n      5: 5 seconds\n      10: 10 seconds\n      20: 20 seconds\n      30: 30 seconds\n      60: 1 minute\n      120: 2 minutes\n      180: 3 minutes\n      300: 5 minutes\n      600: 10 minutes\n      1200: 20 minutes\n      1800: 30 minutes\n      3600: 1 hour\n      7200: 2 hours\n">> /opt/teaspeak/config.yml
-    echo "    "now: '"[b][color=red]Server instance shutting down in now[/color][/b]"' >> /opt/teaspeak/config.yml
-    echo "    "canceled: '"[b][color=green]Scheduled instance shutdown canceled![/color][/b]"' >> /opt/teaspeak/config.yml
-    echo "  music:" >> /opt/teaspeak/config.yml
-    echo "    "'song_announcement: Now replaying ${title} (${url}) added by ${invoker}' >> /opt/teaspeak/config.yml
-    echo "  timeout:" >> /opt/teaspeak/config.yml
-    echo "    connection_reinitialized: Connection lost" >> /opt/teaspeak/config.yml
-    echo "    packet_resend_failed: Packet resend failed" >> /opt/teaspeak/config.yml
-    echo "general:" >> /opt/teaspeak/config.yml
-    echo "  database_url: ~" >> /opt/teaspeak/config.yml
-    echo "  license: none" >> /opt/teaspeak/config.yml
-    echo "  crash_path: crash_dumps/" >> /opt/teaspeak/config.yml
-    echo "  command_prefix: .">> /opt/teaspeak/config.yml
-    echo "  database:" >> /opt/teaspeak/config.yml
-    echo "    url: sqlite://database/TeaData.sqlite" >> /opt/teaspeak/config.yml
-    echo "    sqlite:" >> /opt/teaspeak/config.yml
-    echo "      locking_mode: EXCLUSIVE" >> /opt/teaspeak/config.yml
-    echo "      sync_mode: NORMAL" >> /opt/teaspeak/config.yml
-    echo "      journal_mode: WAL" >> /opt/teaspeak/config.yml
-    echo "  permission_mapping: resources/permission_mapping.txt" >> /opt/teaspeak/config.yml
     echo "binding:">> /opt/teaspeak/config.yml
     echo "  file:" >> /opt/teaspeak/config.yml
-    echo "    "host: '"0.0.0.0,[::]"' >> /opt/teaspeak/config.yml
     echo "    port: $FILE_PORT" >> /opt/teaspeak/config.yml
     echo "  query:" >> /opt/teaspeak/config.yml
-    echo "    "host: '"0.0.0.0,[::]"' >> /opt/teaspeak/config.yml
     echo "    port: $QUERY_PORT" >> /opt/teaspeak/config.yml
-    echo "  voice:" >> /opt/teaspeak/config.yml
-    echo "    "default_host: '"0.0.0.0,::"' >> /opt/teaspeak/config.yml
-    echo "    enforce: 0" >> /opt/teaspeak/config.yml
-    echo "  web:" >> /opt/teaspeak/config.yml
-    echo "    "default_host: '"0.0.0.0"' >> /opt/teaspeak/config.yml
     echo "server:" >> /opt/teaspeak/config.yml
-    echo "  version: TeaSpeak 1.4.14" >> /opt/teaspeak/config.yml
-    echo "  platform: Linux" >> /opt/teaspeak/config.yml
-    echo "  licence: 7" >> /opt/teaspeak/config.yml
-    echo "  delete_old_bans: 1" >> /opt/teaspeak/config.yml
-    echo "  delete_missing_icon_permissions: 0" >> /opt/teaspeak/config.yml
     echo "  allow_weblist: $ALLOW_WEBLIST" >> /opt/teaspeak/config.yml
-    echo "  show_invisible_clients: 1" >> /opt/teaspeak/config.yml
-    echo "  disable_ip_saving: 0" >> /opt/teaspeak/config.yml
-    echo "  strict_ut8_mode: 0" >> /opt/teaspeak/config.yml
-    echo "  default_music_bot: 1" >> /opt/teaspeak/config.yml
-    echo "  max_virtual_servers: 16" >> /opt/teaspeak/config.yml
-    echo "  authentication:" >> /opt/teaspeak/config.yml
-    echo "    name: 0" >> /opt/teaspeak/config.yml
-    echo "  clients:" >> /opt/teaspeak/config.yml
-    echo "    teamspeak: 1" >> /opt/teaspeak/config.yml
-    echo "    "teamspeak_message: '""' >> /opt/teaspeak/config.yml
-    echo "    teamspeak_message_type: 0" >> /opt/teaspeak/config.yml
-    echo "    "teaspeak_message: '""' >> /opt/teaspeak/config.yml
-    echo "    teaspeak_message_type: 0" >> /opt/teaspeak/config.yml
-    echo "    teaweb: 1" >> /opt/teaspeak/config.yml
-    echo "    "teaweb_message: '""' >> /opt/teaspeak/config.yml
-    echo "    teaweb_message_type: 0" >> /opt/teaspeak/config.yml
-    echo "    ignore_max_clone_permissions: 0" >> /opt/teaspeak/config.yml
-    echo "query:" >> /opt/teaspeak/config.yml
-    echo "  "nl_char: '"\r\n"' >> /opt/teaspeak/config.yml
-    echo "  "motd: '"TeaSpeak\r\nWelcome on the TeaSpeak ServerQuery interface.\r\n"' >> /opt/teaspeak/config.yml
-    echo "  enableSSL: 2" >> /opt/teaspeak/config.yml
-    echo "  ssl:" >> /opt/teaspeak/config.yml
-    echo "    certificate: certs/query_certificate.pem" >> /opt/teaspeak/config.yml
-    echo "    privatekey: certs/query_privatekey.pem" >> /opt/teaspeak/config.yml
     echo "voice:" >> /opt/teaspeak/config.yml
-    echo "  notifymute: 1" >> /opt/teaspeak/config.yml
-    echo "  suppress_myts_warnings: 1" >> /opt/teaspeak/config.yml
-    echo "  rsa:" >> /opt/teaspeak/config.yml
-    echo "    puzzle_pool_size: 128" >> /opt/teaspeak/config.yml
-    echo "  handshake:" >> /opt/teaspeak/config.yml
-    echo "    puzzle_level: 1000" >> /opt/teaspeak/config.yml
-    echo "    enforce_cookie: 1" >> /opt/teaspeak/config.yml
-    echo "    warn_on_permission_editor: 1" >> /opt/teaspeak/config.yml
-    echo "  connect_limit: 10" >> /opt/teaspeak/config.yml
-    echo "  client_connect_limit: 3" >> /opt/teaspeak/config.yml
-    echo "  protocol:" >> /opt/teaspeak/config.yml
-    echo "    experimental_31: $EXPERIMENTAL_31" >> /opt/teaspeak/config.yml
     echo "  default_port: $DEFAULT_PORT" >> /opt/teaspeak/config.yml
-    echo "  allow_session_reinitialize: 1" >> /opt/teaspeak/config.yml
     echo "web:" >> /opt/teaspeak/config.yml
     echo "  enabled: $WEB_ENABLED" >> /opt/teaspeak/config.yml
-    echo "  ssl:" >> /opt/teaspeak/config.yml
-    echo "    certificate:" >> /opt/teaspeak/config.yml
-    echo "      default:" >> /opt/teaspeak/config.yml
-    echo "        certificate: certs/default_certificate.pem" >> /opt/teaspeak/config.yml
-    echo "        private_key: certs/default_privatekey.pem" >> /opt/teaspeak/config.yml
-    echo "  webrtc:" >> /opt/teaspeak/config.yml
-    echo "    port_min: 50000" >> /opt/teaspeak/config.yml
-    echo "    port_max: 56000" >> /opt/teaspeak/config.yml
-    echo "    ice:" >> /opt/teaspeak/config.yml
-    echo "      - stun.l.google.com:9302" >> /opt/teaspeak/config.yml
-    echo "    stun:" >> /opt/teaspeak/config.yml
-    echo "      enabled: 0" >> /opt/teaspeak/config.yml
-    echo "      host: stun.l.google.com" >> /opt/teaspeak/config.yml
-    echo "      port: 19302" >> /opt/teaspeak/config.yml
-    echo "    udp: 1" >> /opt/teaspeak/config.yml
-    echo "    tcp: 1" >> /opt/teaspeak/config.yml
-    echo "  upnp: 0" >> /opt/teaspeak/config.yml
-    echo "threads:" >> /opt/teaspeak/config.yml
-    echo "  ticking: 2" >> /opt/teaspeak/config.yml
-    echo "  voice:" >> /opt/teaspeak/config.yml
-    echo "    execute_limit: 5" >> /opt/teaspeak/config.yml
-    echo "    execute_per_server: 3" >> /opt/teaspeak/config.yml
-    echo "    events_per_server: 4" >> /opt/teaspeak/config.yml
-    echo "    io_min: 3" >> /opt/teaspeak/config.yml
-    echo "    io_per_server: 4" >> /opt/teaspeak/config.yml
-    echo "    io_limit: 5" >> /opt/teaspeak/config.yml
-    echo "    bind_io_thread_to_kernel_thread: 0" >> /opt/teaspeak/config.yml
-    echo "  music:" >> /opt/teaspeak/config.yml
-    echo "    execute_limit: 2" >> /opt/teaspeak/config.yml
-    echo "    execute_per_bot: 1" >> /opt/teaspeak/config.yml
-    echo "  web:" >> /opt/teaspeak/config.yml
-    echo "    io_loops: 2" >> /opt/teaspeak/config.yml
-    echo "geolocation:" >> /opt/teaspeak/config.yml
-    echo "  fallback_country: DE" >> /opt/teaspeak/config.yml
-    echo "  mapping:" >> /opt/teaspeak/config.yml
-    echo "    file: geoloc/IP2Location.CSV" >> /opt/teaspeak/config.yml
-    echo "    type: 0" >> /opt/teaspeak/config.yml
-    echo "  force_fallback_country: 0" >> /opt/teaspeak/config.yml
-    echo "  vpn:" >> /opt/teaspeak/config.yml
-    echo "    file: geoloc/ipcat.csv" >> /opt/teaspeak/config.yml
-    echo "    enabled: 0" >> /opt/teaspeak/config.yml
     echo "music:" >> /opt/teaspeak/config.yml
     echo "  enabled: $MUSIC_ENABLED" >> /opt/teaspeak/config.yml
+    chown teaspeak /opt/teaspeak/config.yml
 fi
-if stat -c "%U %G" /opt/teaspeak/database | awk '{print $1}' | grep -Fxq 'root'; then
+if stat -c "%U" /opt/teaspeak/database | grep -Fxq 'root'; then
     chown -R teaspeak /opt/teaspeak
 fi
 su -c "./teastart_minimal.sh" teaspeak
