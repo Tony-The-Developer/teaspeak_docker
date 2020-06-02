@@ -9,6 +9,10 @@ if [ ! -f /opt/teaspeak/config.yml ]; then
     echo "    port: $FILE_PORT" >> /opt/teaspeak/config.yml
     echo "  query:" >> /opt/teaspeak/config.yml
     echo "    port: $QUERY_PORT" >> /opt/teaspeak/config.yml
+    echo "general:" >> /opt/teaspeak/config.yml
+    echo "  database:" >> /opt/teaspeak/config.yml
+    echo "    url: sqlite://database/TeaData.sqlite" >> /opt/teaspeak/config.yml
+    echo "    sqlite:" >> /opt/teaspeak/config.yml
     echo "server:" >> /opt/teaspeak/config.yml
     echo "  allow_weblist: $ALLOW_WEBLIST" >> /opt/teaspeak/config.yml
     echo "voice:" >> /opt/teaspeak/config.yml
